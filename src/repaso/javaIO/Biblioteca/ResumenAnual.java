@@ -6,7 +6,7 @@ public class ResumenAnual {
 
     private Map <String, Integer> paginasPorGenero;
 
-    public ResumenAnual(Map<String, Integer> paginasPorGenero) {
+    public ResumenAnual() {
         paginasPorGenero.put("Ficcion", 0);
         paginasPorGenero.put("Ensayo", 0);
         paginasPorGenero.put("Historia", 0);

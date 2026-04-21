@@ -35,8 +35,10 @@ public class AnalisisLecturas {
                 Map<String, ResumenAnual> anioGeneroPaginas = datos.get(nombre);
 
                 if(!anioGeneroPaginas.containsKey(anio)){
-                    anioGeneroPaginas.put(anio, new ResumenAnual(genero, paginas));
+                    anioGeneroPaginas.put(anio, new ResumenAnual());
                 }
+
+
 
 
 
