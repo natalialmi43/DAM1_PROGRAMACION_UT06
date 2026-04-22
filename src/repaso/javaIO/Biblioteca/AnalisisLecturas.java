@@ -1,6 +1,8 @@
 package repaso.javaIO.Biblioteca;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +17,7 @@ public class AnalisisLecturas {
 
         //Leer y llenar el map
 
-        try (Scanner sc = new Scanner(new File("registro_lecturas"))){
+        try (Scanner sc = new Scanner(new File("registro_lecturas.txt"))){
 
             while (sc.hasNextLine()){
                 String linea = sc.nextLine();
@@ -38,11 +40,9 @@ public class AnalisisLecturas {
                     anioGeneroPaginas.put(anio, new ResumenAnual());
                 }
 
+                ResumenAnual resumenAnual = anioGeneroPaginas.get(anio);
 
-
-
-
-
+                resumenAnual.sumarPaginas(genero, paginas);
             }
 
         } catch (IOException e){
@@ -50,7 +50,36 @@ public class AnalisisLecturas {
             e.printStackTrace();
         }
 
+        //Rellenar
+        for (String nombre : datos.keySet()){
+            File directorio = new File(nombre);
+            if (!directorio.exists()){
+                directorio.mkdir();
+            }
 
+            Map<String, ResumenAnual> anioGeneroPaginas = datos.get(nombre);
+
+            for (String anio : anioGeneroPaginas.keySet()) {
+                String anioFormateado = anio + "_resumen.txt";
+
+                File archivo = new File(directorio, anioFormateado);
+
+                try (BufferedWriter escritor = new BufferedWriter(new FileWriter (archivo))) {
+
+                    ResumenAnual resumenAnual = anioGeneroPaginas.get(anio);
+
+                    // ********
+
+                    for (int i = 0; i < generos.length ; i++) {
+
+                    }
+
+                } catch (IOException e){
+                    System.out.println("Error al escribir");
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 }
