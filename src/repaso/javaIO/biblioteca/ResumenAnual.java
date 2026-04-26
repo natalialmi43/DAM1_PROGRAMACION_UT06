@@ -1,4 +1,4 @@
-package repaso.javaIO.Biblioteca;
+package repaso.javaIO.biblioteca;
 
 import java.util.Map;
 

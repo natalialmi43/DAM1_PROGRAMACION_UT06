@@ -11,6 +11,7 @@ ocurra o no un error.
  */
 
 import java.io.*;
+import java.util.Scanner;
 
 public class E05CopiaSeguridad {
     public static void main(String[] args) {
@@ -20,16 +21,16 @@ public class E05CopiaSeguridad {
 
         // 1. Usamos try-with-resources para declarar AMBOS flujos.
         // Se separan con un punto y coma (;). Java cerrará los dos al terminar.
-        try (
-                BufferedReader lector = new BufferedReader(new FileReader(origen));
+        try ( Scanner sc = new Scanner(new FileReader(origen));
                 BufferedWriter escritor = new BufferedWriter(new FileWriter(destino))
         ) {
-            String linea;
+            String linea = sc.nextLine();
 
             // 2. Bucle de lectura/escritura: mientras haya texto en el origen...
-            while ((linea = lector.readLine()) != null) {
-                escritor.write(linea); // Escribimos la línea en el destino
-                escritor.newLine();    // Añadimos el salto de línea para que no salga todo pegado
+            while (sc.hasNextLine()){
+                escritor.write(linea);
+                escritor.newLine();
+                linea = sc.nextLine();
             }
 
             System.out.println("Copia finalizada con éxito.");

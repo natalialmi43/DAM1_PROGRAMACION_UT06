@@ -69,6 +69,7 @@ public class Peonadas {
                 File archivoPersona = new File(carpetaAnio, nombreArchivo);
 
                 try(BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoPersona))){
+
                     int [] conteoMeses = personas.get(nombre);
 
                     for (int i = 0; i < 12; i++) {
